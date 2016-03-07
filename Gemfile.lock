@@ -38,11 +38,12 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.4.0)
     arel (6.0.3)
-    aws-sdk (1.66.0)
-      aws-sdk-v1 (= 1.66.0)
-    aws-sdk-v1 (1.66.0)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
+    aws-sdk (2.2.24)
+      aws-sdk-resources (= 2.2.24)
+    aws-sdk-core (2.2.24)
+      jmespath (~> 1.0)
+    aws-sdk-resources (2.2.24)
+      aws-sdk-core (= 2.2.24)
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
@@ -60,7 +61,6 @@ GEM
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cliver (0.3.2)
-    cmdparse (3.0.1)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
     coffee-rails (4.1.1)
@@ -82,8 +82,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    domain_name (0.5.20160216)
-      unf (>= 0.0.5, < 1.0.0)
     erubis (2.7.0)
     execjs (2.6.0)
     factory_girl (4.5.0)
@@ -98,14 +96,12 @@ GEM
       thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
-    highline (1.7.8)
     hirb (0.7.3)
-    http-cookie (1.0.2)
-      domain_name (~> 0.5)
     i18n (0.7.0)
     jbuilder (2.4.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
+    jmespath (1.1.3)
     jquery-rails (4.1.0)
       rails-dom-testing (~> 1.0)
       railties (>= 4.2.0)
@@ -124,11 +120,6 @@ GEM
     mini_portile2 (2.0.0)
     minitest (5.8.4)
     multi_json (1.11.2)
-    net-http-persistent (2.9.4)
-    net-ssh (3.0.2)
-    net-ssh-gateway (1.2.0)
-      net-ssh (>= 2.6.5)
-    netrc (0.11.0)
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     orm_adapter (0.5.0)
@@ -138,9 +129,6 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
-    parallel (1.6.2)
-    parallel_tests (1.3.7)
-      parallel
     pdf-core (0.6.1)
     pg (0.18.4)
     poltergeist (1.9.0)
@@ -188,10 +176,6 @@ GEM
     redis (3.2.2)
     responders (2.1.1)
       railties (>= 4.2.0, < 5.1)
-    rest-client (1.8.0)
-      http-cookie (>= 1.0.2, < 2.0)
-      mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
     rspec-core (3.4.3)
       rspec-support (~> 3.4.0)
     rspec-expectations (3.4.0)
@@ -217,23 +201,6 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sauce (3.7.1)
-      childprocess (>= 0.1.6)
-      cmdparse (>= 2.0.2)
-      highline (>= 1.5.0)
-      json (>= 1.2.0)
-      net-http-persistent
-      net-ssh
-      net-ssh-gateway
-      parallel_tests (>= 1.1.1, <= 1.3.7)
-      rest-client
-      sauce_whisk (~> 0.0.11)
-      selenium-webdriver (>= 0.1.2)
-    sauce-connect (3.6.2)
-      sauce (~> 3.5)
-    sauce_whisk (0.0.21)
-      json (~> 1.8.1)
-      rest-client (~> 1.8.0)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -268,9 +235,6 @@ GEM
     uglifier (2.7.2)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
-    unf (0.1.4)
-      unf_ext
-    unf_ext (0.0.7.2)
     warden (1.2.6)
       rack (>= 1.0)
     web-console (2.3.0)
@@ -304,7 +268,6 @@ DEPENDENCIES
   launchy
   letter_opener
   paperclip
-  parallel_tests
   pg (~> 0.15)
   poltergeist
   prawn
@@ -312,8 +275,6 @@ DEPENDENCIES
   rails (= 4.2.5.1)
   rspec-rails
   sass-rails (~> 5.0)
-  sauce
-  sauce-connect
   sdoc (~> 0.4.0)
   selenium-webdriver
   sidekiq
