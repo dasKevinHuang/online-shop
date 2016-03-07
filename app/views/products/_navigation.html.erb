@@ -29,6 +29,7 @@
             <li><%= link_to "Admins Only", admin_path %></li>
             <li><%= link_to raw("Items in Cart <span class='badge' id='cart_total'> #{cart_total} </span>"), cart_path, data: {no_turbolink: true} %></li>
           <% end %>
+          <li><%= link_to image_tag "https://travis-ci.org/dasKevinHuang/online-shop.svg?branch=master", "https://travis-ci.org/dasKevinHuang/online-shop/" %></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
