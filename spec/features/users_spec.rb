@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'sidekiq/testing'
 Sidekiq::Testing.fake! # fake is the default mode
 
-describe "User", :js => true do
+describe "User", :js => true, :sauce => true do
   context "Sign Up Page" do
     before(:each) do
       visit new_user_registration_path

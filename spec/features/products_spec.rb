@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Product", :js => true do
+describe "Product", :js => true, :sauce => true do
   let!(:products) { Product.all }
   let!(:product) { products.first }
   let!(:product2) { products[1] }
