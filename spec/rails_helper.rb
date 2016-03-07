@@ -12,6 +12,7 @@ if ENV['RUN_ON_SAUCE']
   require 'sauce'
   require 'sauce/capybara'
   Capybara.javascript_driver = :sauce
+  Capybara.app_host = "http://#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}@ondemand.saucelabs.com:80/wd/hub"
   Sauce.config do |config|
     config[:browsers] = [
       ['OS X 10.11', 'Firefox', 44],
