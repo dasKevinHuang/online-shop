@@ -2,4 +2,3 @@
 
  * [heroku url](https://shielded-waters-93894.herokuapp.com/)
 
- * This sentence is to trick Heroku
