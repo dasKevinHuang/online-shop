@@ -11,8 +11,23 @@ if ENV['RUN_ON_SAUCE']
 
   require 'sauce'
   require 'sauce/capybara'
+def register_new_saucelabs_driver(caps)
+  url = "http://#{ENV["SAUCE_USERNAME"]}" +
+  ":#{ENV["SAUCE_ACCESS_KEY"]}" +
+  "@ondemand.saucelabs.com:80/wd/hub"
+  Capybara.register_driver "sauce_#{Time.now.to_i}" do |app|
+    Capybara::Selenium::Driver.new(app,
+                                   browser: :remote, url: url,
+                                   desired_capabilities: caps)
+  end
+  Capybara.default_driver = "sauce_#{Time.now.to_i}"
+  Capybara.javascript_driver = "sauce_#{Time.now.to_i}"
+end
+caps = Selenium::WebDriver::Remote::Capabilities.firefox
+caps['build'] = 44
+register_new_saucelabs_driver(caps)
+Capybara.server_port = 6543
   Capybara.javascript_driver = :sauce
-  Capybara.app_host = "http://#{ENV["SAUCE_USERNAME"]}:#{ENV["SAUCE_ACCESS_KEY"]}@ondemand.saucelabs.com:80/wd/hub"
   Sauce.config do |config|
     config[:browsers] = [
       ['OS X 10.11', 'Firefox', 44],
