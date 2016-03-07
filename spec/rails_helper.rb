@@ -14,7 +14,6 @@ if ENV['RUN_ON_SAUCE']
   Sauce.config do |c|
     c[:start_tunnel] = true
   end
-  Capybara.javascript_driver = :sauce
 end
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller

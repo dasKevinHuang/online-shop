@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Admin", :js => true, :sauce => true do
+describe "Admin", :js => true do
   context "Admin Page Login" do
     before(:each) do
       visit root_path
