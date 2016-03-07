@@ -7,7 +7,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
 require 'support/controller_macros'
-if ENV['SAUCY']
+if ENV['RUN_ON_SAUCE']
 
   require 'sauce'
   require 'sauce/capybara'

@@ -22,11 +22,9 @@ gem 'aws-sdk'
 
 group :development, :test do
 
-if ENV['SAUCY']
 gem 'sauce'
 gem 'sauce-connect'
 gem 'parallel_tests'
-end
 gem 'hirb'
 gem 'byebug'
 gem 'rspec-rails'

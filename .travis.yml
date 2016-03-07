@@ -3,7 +3,7 @@ rvm:
 - 2.2.0
 env:
   global:
-    - SAUCY: true
+    - RUN_ON_SAUCE: true
 install:
 - bundle install
 script:
