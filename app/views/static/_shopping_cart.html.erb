@@ -1,0 +1,63 @@
+<% unless session[:cart_items].nil? %>
+  <div id="data-total" data-total="<%= session[:cart_items].count %>"></div>
+<% else %>
+  <div id="data-total" data-total="0"></div>
+<% end %>
+
+
+
+<% if session[:cart_items].nil? || session[:cart_items].count == 0 %>
+
+  Your shopping cart is empty...
+
+<% else %>
+
+  <%= form_for 'cart_items', :remote => false, :html => { :'data-type' => 'html', :id => 'update_cart_form' } do |f| %>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Img</th>
+          <th>Title</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% subtotal = 0 %>
+  
+        <% session[:cart_items].each do |k,v| %>
+          <% p = Product.find(k.to_i) %>
+          <% subtotal += (p.price * v.to_i) %>
+
+          <tr>
+          <th scope="row"><%= p.id %></th>
+          <td><img src="<%= p.url %>" width="70px" class="thumbnail"></td>
+          <td><b><%= p.title %></b></td>
+          <td>
+            <span class="glyphicon glyphicon-plus quantity_increase" data-inventory="12" aria-hidden="true"></span>
+            <%= text_field(:product, p.id, size: 2, value: v) %>
+            <span class="glyphicon glyphicon-minus quantity_decrease" aria-hidden="true"></span>
+          </td>
+          <td><%= number_to_currency(p.price) %></td>
+          <td><%= link_to "Remove", remove_from_cart_path(p.id), :remote => true, :id => "remove_from_cart" %></td>   
+          </tr>
+        <% end %>
+
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>subtotal: </td>
+          <td><b><%= number_to_currency(subtotal) %></b></td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="validation-error"></div>
+    <%= f.submit 'Update Cart' %>
+    <%= f.submit 'Complete Order' %>
+    <%= link_to "Empty Cart", empty_cart_path, remote: true %>
+  <% end %>
+<% end %>

@@ -1,0 +1,17 @@
+  <h1>Our Products</h1>
+
+  <hr><br>
+
+  <div class="row">
+    <% @products.each_slice(4) do |row|%>
+      <% row.each do |p| %>
+        <div class="col-sm-3 col-md-3 col-lg-6 text-center">
+          <%= link_to image_tag(p.photo.url), product_path(p), {:class => 'thumbnail'} %>
+          <p><b><%= link_to p.title.upcase, product_path(p) %></b></p>
+          <h4>$<%= p.price %></h4>
+        </div>
+      <% end %>
+      <div class="col-sm-12 col-md-12 col-lg-12 text-center"><hr><br></div>
+
+    <% end %>
+  </div>

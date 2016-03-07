@@ -1,0 +1,70 @@
+<%= form_for @product, multipart: true do |f| %>
+ 
+  <% if @product.errors.any? %>
+    <h4><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h4>
+
+    <div class="alert alert-danger alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <% @product.errors.full_messages.each do |msg| %>
+          <li><strong>Oppss!</strong> <%= msg %></li>
+        <% end %>
+    </div>
+
+  <% end %>
+
+  <div class="form-group row">
+    <%= f.label :title, for: 'inputTitle', class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :title,  class: 'form-control', autofocus: true, placeholder: 'Enter Product Name'%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :price, for: 'inputPrice', class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :price,  class: 'form-control', autofocus: true, placeholder: 'Enter Price'%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :quantity, for: 'inputQuantity', class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_field :quantity,  class: 'form-control', autofocus: true, placeholder: 'Enter Quantity'%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :photo, for: 'inputPhoto', class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.file_field :photo,  class: 'form-control', autofocus: true%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :details, for: 'inputDetails', class: 'col-sm-2' %>
+    <div class="col-sm-4">
+      <%= f.text_area :details,  class: 'form-control', autofocus: true, placeholder: 'Enter Details'%>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <%= f.label :Categories, for: 'inputDetails', class: 'col-sm-2' %>
+    <div class="col-sm-10">
+      <div class="checkbox">
+        <%= hidden_field_tag "product[category_ids][]", nil %>
+        <% Category.all.each do |category| %>
+          <%= check_box_tag "product[category_ids][]", category.id, @product.category_ids.include?(category.id) %><%= category.title %>
+          <br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="form-group row">
+    <div class="col-sm-offset-2 col-sm-10">
+      <%= f.submit 'Submit', class: 'btn btn-secondary' %>
+    </div>
+  </div>
+
+<% end %>

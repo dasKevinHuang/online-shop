@@ -1,0 +1,40 @@
+<h1>Administration</h1>
+
+<hr>
+<%= link_to "Add a New Product", new_product_path, :class => "btn btn-primary" %>
+<hr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Img</th>
+      <th>Title</th>
+      <th>Details</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @products.each do |p| %>
+  
+
+    <tr>
+      
+      <th scope="row"><%= p.id %></th>
+      <td><img src="<%= p.photo.url %>" width="70px" class="thumbnail"></td>
+      <td><b><%= p.title %></b></td>
+      <td><%= p.details %></td>
+      <td><%= p.quantity %></td>
+      <td>$<%= p.price %></td>
+      <td>
+        <%= link_to 'Edit', edit_product_path(p) %>
+        <%= link_to 'Destroy', p, :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+      </td>
+            
+    </tr>
+
+<% end %>
+
+  </tbody>
+</table>

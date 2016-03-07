@@ -1,0 +1,49 @@
+source 'https://rubygems.org'
+
+
+gem 'figaro'
+gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'sidekiq'
+gem 'rails', '4.2.5.1'
+gem 'pg', '~> 0.15'
+gem 'sass-rails', '~> 5.0'
+gem 'uglifier', '>= 1.3.0'
+gem 'coffee-rails', '~> 4.1.0'
+gem 'jquery-rails'
+gem 'turbolinks'
+gem 'jbuilder', '~> 2.0'
+gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'devise'
+gem 'faker'
+gem 'prawn'
+gem 'prawn-table'
+gem 'paperclip'
+gem 'aws-sdk'
+
+group :development, :test do
+
+if ENV['SAUCY']
+gem 'sauce'
+gem 'sauce-connect'
+gem 'parallel_tests'
+end
+gem 'hirb'
+gem 'byebug'
+gem 'rspec-rails'
+gem 'database_cleaner'
+gem 'factory_girl_rails'
+gem 'capybara'
+gem 'selenium-webdriver'
+end
+
+group :development do
+
+gem 'web-console', '~> 2.0'
+end
+
+group :test do
+gem 'poltergeist'
+gem 'letter_opener'
+gem 'launchy'
+
+end

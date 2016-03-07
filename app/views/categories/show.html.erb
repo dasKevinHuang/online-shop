@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-sm-4 col-md-4">
+      <div class="thumbnail">
+        <img src="<%= @category.image_url %>" alt="<%= @category.title %>">
+      </div>
+    </div> 
+
+    <div class="col-sm-8 col-md-8">
+      <h2><%= @category.title %></h2>
+      <p class="lead"><%= @category.description %></p>
+    </div> 
+</div>
+
+<h4>Category Products</h4>
+<hr>
+
+<% @category.products.each do |p| %>
+<div class="row">
+    <div class="col-sm-2 col-md-2">
+      <div class="thumbnail"><%= link_to image_tag(p.photo.url), product_path(p) %></div>
+    </div> 
+
+    <div class="col-sm-8 col-md-8">
+      <h4><%= link_to p.title, product_path(p) %> - $<%= p.price %></h4>
+      <p><%= p.details %></p>
+    </div> 
+</div>
+
+<hr>
+<% end %>

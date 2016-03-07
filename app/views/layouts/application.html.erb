@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>TetShoppe</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render 'products/navigation' %>
+  <div class="container">
+    <% flash.each do |name, msg| -%>
+      <% if name == "alert" %>
+        <%= content_tag :div, msg, class: 'alert-danger alert', role: 'alert' %>
+      <% elsif name == "success" %>
+        <%= content_tag :div, msg, class: 'alert-success alert', role: 'alert' %>
+      <% else %>
+        <%= content_tag :div, msg, class: 'alert-info alert', role: 'alert' %>
+      <% end %>
+    <% end -%>    
+    <%= yield %>
+  </div>
+
+</body>
+</html>

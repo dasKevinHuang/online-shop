@@ -1,0 +1,28 @@
+<h4>Order Details</h4>
+Order# <%= order.id %> | <b>customer:</b> <%= current_user.email %> | <b>order date:</b> <%= order.created_at.httpdate %>
+<br>
+<br>
+<%= link_to "Download Order ##{order.id} PDF", order_path(order, format: 'pdf'), class: "btn btn-success btn-sm"  %>
+<hr>
+<table class="table table-hover table-bordered">
+  <tr>
+    <td class="info"><b>Product</b></td>
+    <td class="info"><b>Unit Price</b></td>
+    <td class="info"><b>Quantity</b></td>
+    <td class="info"><b>Subtotal</b></td>
+  </tr>
+  <% order.order_items.each do |o| %>
+    <tr>
+      <td class="active"><%= o.product.title %></td>
+      <td class="active"><%= number_to_currency(o.unit_price) %></td>
+      <td class="active"><%= o.quantity %></td>
+      <td class="active"><%= number_to_currency(o.quantity * o.unit_price) %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td class="info"></td>
+      <td class="info"></td>
+      <td class="info"></td>
+      <td class="info"><h4><%= number_to_currency(order.subtotal) %></h4></td>
+    </tr>
+</table>

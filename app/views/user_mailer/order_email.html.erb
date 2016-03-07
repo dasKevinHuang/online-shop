@@ -1,0 +1,34 @@
+<h1>Thank you for shopping at Test Shoppe!</h1>
+At Test Shoppe, a Squirrel Company, we cherish <b>every dollar</b> you throw at our way - so please continue doing so.
+In exchange, we will continue to spam you. Here is the important stuff:
+<hr>
+Order Confirmation for <%= @email %>
+<br>
+Order date: <%= @order.created_at %>
+<br>
+Order #: <%= @order.id %>
+<br>
+<table class="table table-hover table-bordered">
+  <tr>
+    <td class="info"><b>Product</b></td>
+    <td class="info"><b>Unit Price</b></td>
+    <td class="info"><b>Quantity</b></td>
+    <td class="info"><b>Subtotal</b></td>
+  </tr>
+  <% @order.order_items.each do |o| %>
+    <tr>
+      <td class="active"><%= o.product.title %></td>
+      <td class="active"><%= number_to_currency(o.unit_price) %></td>
+      <td class="active"><%= o.quantity %></td>
+      <td class="active"><%= number_to_currency(o.quantity * o.unit_price) %></td>
+    </tr>
+  <% end %>
+    <tr>
+      <td class="info"></td>
+      <td class="info"></td>
+      <td class="info"></td>
+      <td class="info"><h4><%= number_to_currency(@order.subtotal) %></h4></td>
+    </tr>
+</table>
+
+<%= link_to "Please chip in $100 to our founder's boat fund by making another order today.", "https://still-dusk-76019.herokuapp.com/" %>

@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.2.0
+env:
+  global:
+    - SAUCY: true
+install:
+- bundle install
+script:
+- bundle exec rake db:drop db:create db:migrate db:seed
+- bundle exec rspec
+addons:
+  sauce_connect: true

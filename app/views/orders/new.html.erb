@@ -1,0 +1,31 @@
+<h1>New Order Received</h1>
+
+
+<% @order.order_items.each do |o| %>
+-----  <%= o.product_id %> 
+<%= o.order_id %> 
+<%= number_to_currency(o.unit_price) %> 
+<%= o.quantity %> 
+<%= number_to_currency(o.quantity * o.unit_price) %> 
+<%= o.created_at.httpdate %>
+<%= @order.subtotal %>
+<br><br>
+Customer: <%= current_user.email %>
+<% end %>
+
+<h2>Order Details - #<%= @order.id %></h2>
+<hr>
+<table class="table table-hover table-striped">
+  <tr>
+    <td class="active">...</td>
+  </tr>
+</table>
+
+
+
+
+<!--   <td class="success">...</td>
+  <td class="warning">...</td>
+  <td class="danger">...</td>
+  <td class="info">...</td>
+ -->
