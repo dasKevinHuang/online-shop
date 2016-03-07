@@ -1,5 +1,5 @@
 # Rails Online Shop Challenge - Readme
 
- * [heroku url](https://still-dusk-76019.herokuapp.com/)
+ * [heroku url](https://shielded-waters-93894.herokuapp.com/)
 
  * This sentence is to trick Heroku
