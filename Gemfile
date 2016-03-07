@@ -22,9 +22,6 @@ gem 'aws-sdk'
 
 group :development, :test do
 
-gem 'sauce'
-gem 'sauce-connect'
-gem 'parallel_tests'
 gem 'hirb'
 gem 'byebug'
 gem 'rspec-rails'

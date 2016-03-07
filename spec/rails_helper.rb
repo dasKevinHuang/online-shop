@@ -7,14 +7,6 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'devise'
 require 'support/controller_macros'
-if ENV['RUN_ON_SAUCE']
-
-  require 'sauce'
-  require 'sauce/capybara'
-  Sauce.config do |c|
-    c[:start_tunnel] = true
-  end
-end
 RSpec.configure do |config|
   config.include Devise::TestHelpers, :type => :controller
   config.extend ControllerMacros, :type => :controller

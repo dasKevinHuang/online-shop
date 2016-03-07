@@ -1,11 +1,6 @@
 language: ruby
 rvm:
 - 2.2.0
-env:
-global:
-- RUN_ON_SAUCE: true
-addons:
-sauce_connect: true
 install:
 - bundle install
 before_script:
